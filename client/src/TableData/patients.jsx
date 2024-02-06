@@ -1,20 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import JsonData from './fakeData.json'
 function TableDisplay() {
-    const DisplayData = JsonData.map(
+    const [searchTerm, setSearchTerm] = useState('');
+
+    // Filter data based on search term
+    const filteredData = JsonData.filter(info =>
+        info.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    const DisplayData = filteredData.map(
         (info) => {
             return (
-                <tr>
+                <tr key={info.id}>
                     <td>{info.id}</td>
                     <td>{info.name}</td>
                 </tr>
             )
         }
-    )
+    );
 
     return (
-        <div>
-            <table class="cool-table">
+        <div class="table-container">
+            <input
+                type="text"
+                placeholder="Search by name..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-bar"
+            />
+            <table className="cool-table">
                 <thead>
                     <tr>
                         <th>ID</th>
