@@ -1,4 +1,11 @@
+import TableDisplay from "../../TableData/patients";
 export default function Home() {
-    return <h1>Tech12</h1>
+    return (
+        <div>
+            <h1 class="HomePageHeader">Patient Log</h1>
+            <TableDisplay />
+        </div>
+    );
+
 
 }
