@@ -1,23 +1,44 @@
-import React from 'react';
-import patientSchema from './Patient'
 
-const PatientInfo = () => {
-    const patient_info = patientSchema();
-  
+import React, { useEffect, useState } from 'react';
+import './ViewPatient.css'; // Import CSS file for styling
+
+const ViewPatient = ({ patientId }) => {
+    const [patientData, setPatientData] = useState(null);
+
+    useEffect(() => {
+        const fetchPatientData = async () => {
+            try {
+                const response = await fetch(`/api/patients/${patientId}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch patient data');
+                }
+                const data = await response.json();
+                setPatientData(data);
+            } catch (error) {
+                console.error('Error fetching patient data:', error);
+            }
+        };
+
+        fetchPatientData();
+    }, [patientId]);
+
     return (
-      <div className="patient-info">
-        <h2>Patient Information</h2>
-        <div className="info">
-          <p><strong>_id:</strong> {patient_info._id}</p>
-          <p><strong>Name:</strong> {patient_info.name}</p>
-          <p><strong>Age:</strong> {patient_info.age}</p>
-          
-          <p><strong>Date:</strong> {patient_info.date}</p>
-          <p><strong>Treatments:</strong> {patient_info.treatments}</p>
-          <img src={patient_info.img} alt="Patient Exam" />
+        <div className="patient-info">
+            <h2>Patient Information</h2>
+            {patientData ? (
+                <div className="info">
+                    <p><strong>ID:</strong> {patientData._id}</p>
+                    <p><strong>Name:</strong> {patientData.name}</p>
+                    <p><strong>Age:</strong> {patientData.age}</p>
+                    <p><strong>Date:</strong> {patientData.enrollmentDate}</p>
+                    <p><strong>Treatments:</strong> {patientData.treatments}</p>
+                    <img src={patientData.img} alt="Patient Exam" />
+                </div>
+            ) : (
+                <p>Loading patient data...</p>
+            )}
         </div>
-      </div>
     );
-  }
-  
-  export default PatientInfo;
+}
+
+export default ViewPatient;
