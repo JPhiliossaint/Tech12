@@ -1,4 +1,11 @@
+import TableDisplay from "../../TableData/AdminPatients";
 export default function Admin() {
-    return <h1>Admin</h1>
+    return (
+        <div>
+            <h1 class="HomePageHeader">Admin</h1>
+            <TableDisplay />
+        </div>
+    );
+
 
 }

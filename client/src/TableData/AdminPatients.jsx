@@ -13,6 +13,13 @@ function TableDisplay() {
                 <tr key={info.id}>
                     <td>{info.id}</td>
                     <td>{info.name}</td>
+                    <td>
+                        <div className="buttonContainer">
+                            <button className='update'>Update</button>
+                            <button className='delete'>Delete</button>
+                        </div>
+                    </td>
+
                 </tr>
             )
         }
@@ -32,6 +39,7 @@ function TableDisplay() {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
