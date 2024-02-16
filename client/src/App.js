@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Home from "./components/pages/Home";
 import Exams from "./components/pages/Exams";
 import Admin from "./components/pages/Admin";
+// import PatientForm from './components/PatientForm';
 
 import { useApi } from './hooks/use-api';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/exams' element={<Exams />} />
           <Route path='/admin' element={<Admin />} />
+          {/* <Route path='/PatientForm' element={<PatientForm />} /> */}
         </Routes>
       </div>
       <header className="App-header">

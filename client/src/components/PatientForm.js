@@ -1,52 +1,63 @@
 import { useState } from "react"
 
 const PatientForm = () => {
-    const [name, setName] = useState('')
+    const [patientID, setPatientID] = useState('')
+    const [examID, setExamID] = useState('')
+    const [image, setImage] = useState('')
+    const [keyfindings, setKeyfindings] = useState('')
+    const [brixiascore, setBrixiascore] = useState('')
     const [age, setAge] = useState('')
-    const [gender, setGender] = useState('')
-    const [birthDate, setBirthDate] = useState('')
-    const [error, setError] = useState(null)
+    const [sex, setSex] = useState('')
+    const [bmi, setBmi] = useState('')
+    const [zipcode, setZipcode] = useState('')
+    // const [error, setError] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const patient = { name, age, gender, birthDate }
-
-        //Check for fetched data. Will come back later
-        const response = await fetch('/api/patient/', {
-            method: 'POST',
-            body: JSON.stringify(patient),
-            headers: { 'Content-Type': 'application/json' },
+        const patient = { patientID, examID, image, keyfindings, brixiascore, age, sex, bmi, zipcode, error }
 
 
-        })
-
-
-        const json = await response.json()
-
-        if (!response.success) {
-            setError(json.error)
-        }
-
-        if (response.success) {
-            setName('')
-            setAge('')
-            setGender('')
-            setBirthDate('')
-            setError(null)
-            console.log('new patient added', json)
-        }
     }
 
     return (
         <form className="create" onSubmit={handleSubmit}>
             <h3>Add a New Patient</h3>
 
-            <label>Name</label>
+            <label>Patient ID</label>
             <input
                 type="text"
-                onChange={(e) => setName(e.target.value)}
-                value={title}
+                onChange={(e) => setPatientID(e.target.value)}
+                value={patientID}
+            />
+
+            <label>Exam ID</label>
+            <input
+                type="text"
+                onChange={(e) => setExamID(e.target.value)}
+                value={examID}
+            />
+
+            <label>Image</label>
+            <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+                value={image}
+            />
+
+            <label>keyfindings</label>
+            <input
+                type="text"
+                onChange={(e) => setKeyfindings(e.target.value)}
+                value={keyfindings}
+            />
+
+            <label>Brixia Score</label>
+            <input
+                type="number"
+                onChange={(e) => setBrixiascore(e.target.value)}
+                value={brixiascore}
+
             />
 
             <label>Age</label>
@@ -56,18 +67,25 @@ const PatientForm = () => {
                 value={age}
             />
 
-            <label>Gender</label>
+            <label>Sex</label>
             <input
                 type="text"
-                onChange={(e) => setGender(e.target.value)}
-                value={gender}
+                onChange={(e) => setSex(e.target.value)}
+                value={sex}
             />
 
-            <label>Birthdate</label>
+            <label>BMI</label>
             <input
                 type="number"
-                onChange={(e) => setBirthDate(e.target.value)}
-                value={birthDate}
+                onChange={(e) => setBmi(e.target.value)}
+                value={bmi}
+            />
+
+            <label>Zip Code</label>
+            <input
+                type="number"
+                onChange={(e) => setZipcode(e.target.value)}
+                value={zipcode}
             />
 
             <button>Add Patient</button>
