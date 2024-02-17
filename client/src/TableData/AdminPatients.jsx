@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { usePatientContext } from '../hooks/usePatientsContext';
 
 function TableDisplay() {
     const [patients, setPatients] = useState([]);
@@ -24,6 +25,20 @@ function TableDisplay() {
     const filteredPatients = patients.filter(patient =>
         patient && patient.patientId && patient.patientId.toLowerCase().includes(searchTerm.toLowerCase())
     );
+       
+    // const {dispatch} = usePatientContext()
+ 
+    // const clickDelete = async () => {
+    //     const response = await fetch('/backend/patients' + patients._id, {
+    //         method: 'DELETE'
+    //     })
+    //     const json = await response.json()
+
+    //     if (response.ok) {
+    //         dispatch({type: 'DELETE_PATIENT', payload: json})
+    //     }
+    // }
+    
 
     const displayData = filteredPatients.map(patient => (
         <tr key={patient._id}>

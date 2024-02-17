@@ -1,4 +1,4 @@
-import TableDisplay from "../../TableData/Patients";
+import TableDisplay from "../../TableData/patients";
 export default function Home() {
     return (
         <div>
