@@ -12,7 +12,7 @@ export default function Exams() {
             <input type="text" id="examID" name="examID" />
 
             <label htmlFor="image">Image:</label>
-            <input type="file" id="image" name="image" />
+            <input type="text" id="image" name="image" />
 
             <label htmlFor="keyFindings">Key Findings:</label>
             <textarea id="keyFindings" name="keyFindings"></textarea>
