@@ -1,4 +1,4 @@
-import { useState } from "react"
+// import { useState } from "react"
 
 const PatientForm = () => {
     const [patientID, setPatientID] = useState('')
@@ -12,19 +12,19 @@ const PatientForm = () => {
     const [zipcode, setZipcode] = useState('')
     // const [error, setError] = useState(null)
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
 
-        const patient = { patientID, examID, image, keyfindings, brixiascore, age, sex, bmi, zipcode, error }
+    //     const patient = { patientID, examID, image, keyfindings, brixiascore, age, sex, bmi, zipcode, error }
 
 
-    }
+    // }
 
     return (
         <form className="create" onSubmit={handleSubmit}>
             <h3>Add a New Patient</h3>
 
-            <label>Patient ID</label>
+            {/* <label>Patient ID</label>
             <input
                 type="text"
                 onChange={(e) => setPatientID(e.target.value)}
@@ -85,10 +85,10 @@ const PatientForm = () => {
             <input
                 type="number"
                 onChange={(e) => setZipcode(e.target.value)}
-                value={zipcode}
-            />
+                value={zipcode} */}
+            {/* /> */}
 
-            <button>Add Patient</button>
+            <button type="submit">Add Patient</button>
 
         </form>
     )
