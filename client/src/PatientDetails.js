@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
-import './ViewPatient.css'; // Import CSS file for styling
+import './PatientDetails.css'; // Import CSS file for styling
 
-const ViewPatient = ({ patientId }) => {
+const PatientDetails = ({ patientId }) => {
     const [patientData, setPatientData] = useState(null);
 
     useEffect(() => {
@@ -27,12 +26,15 @@ const ViewPatient = ({ patientId }) => {
             <h2>Patient Information</h2>
             {patientData ? (
                 <div className="info">
-                    <p><strong>ID:</strong> {patientData._id}</p>
-                    <p><strong>Name:</strong> {patientData.name}</p>
+                    <p><strong>ID:</strong> {patientData.patientId}</p>
                     <p><strong>Age:</strong> {patientData.age}</p>
-                    <p><strong>Date:</strong> {patientData.enrollmentDate}</p>
-                    <p><strong>Treatments:</strong> {patientData.treatments}</p>
-                    <img src={patientData.img} alt="Patient Exam" />
+                    <p><strong>Sex:</strong> {patientData.sex}</p>
+                    <p><strong>Zip Code:</strong> {patientData.zipCode}</p>
+                    <p><strong>BMI:</strong> {patientData.bmi}</p>
+                    <p><strong>Exam ID:</strong> {patientData.examId}</p>
+                    <p><strong>Key Findings:</strong> {patientData.keyFindings}</p>
+                    <p><strong>Brixia Scores:</strong> {patientData.brixiaScores}</p>
+                    <img src={patientData.imageURL} alt="Patient Exam" className="xray-image" />
                 </div>
             ) : (
                 <p>Loading patient data...</p>
@@ -41,4 +43,5 @@ const ViewPatient = ({ patientId }) => {
     );
 }
 
-export default ViewPatient;
+export default PatientDetails;
+
