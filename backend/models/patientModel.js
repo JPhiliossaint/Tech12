@@ -25,7 +25,7 @@ const patientSchema = new Schema({
     },
     __v: {
         type: Number,
-        required: true
+        required: false
     },
     examId: {
         type: String,
