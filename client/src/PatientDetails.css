@@ -1,37 +1,30 @@
+/* PatientDetails.css */
 
 /* Container styles */
 .patient-info {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Header styles */
-  .patient-info h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  /* Information styles */
-  .info {
-    margin-top: 10px;
-  }
-  
-  .info p {
-    margin-bottom: 10px;
-  }
-  
-  /* Image styles */
-  .info img {
-    display: block;
-    margin-top: 10px;
-    max-width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
+  padding: 20px;
+}
+
+/* Header styles */
+.patient-info h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Patient details styles */
+.patient-info .info {
+  margin-bottom: 20px;
+}
+
+.patient-info .info p {
+  margin-bottom: 10px;
+}
+
+/* X-ray image styles */
+.patient-info .info img.xray-image {
+  max-width: 100%; /* Adjust the maximum width as needed */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto;
+  max-height: 400px; /* Adjust the maximum height as needed */
+}
