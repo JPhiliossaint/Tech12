@@ -11,7 +11,7 @@ const PatientDetails = ({ patientId }) => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch patient data');
                 }
-                const data = await response.json();
+const data = await response.json();
                 setPatientData(data);
             } catch (error) {
                 console.error('Error fetching patient data:', error);

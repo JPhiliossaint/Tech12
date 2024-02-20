@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import Home from "./components/pages/Home";
 import Exams from "./components/pages/Exams";
 import Admin from "./components/pages/Admin";
-import PatientDetails from "./components/pages/PatientDetails"
+import PatientDetails from "./PatientDetails"
 
 
 import { useApi } from './hooks/use-api';
