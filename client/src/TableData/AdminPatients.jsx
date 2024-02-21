@@ -21,6 +21,21 @@ function TableDisplay() {
         fetchPatients();
     }, []);
 
+    const handleDelete = async (patientId) => {
+        try {
+            const response = await fetch(`/api/patients/${patientId}`, {
+                method: 'DELETE',
+            });
+            if (!response.ok) {
+                throw new Error('Failed to delete patient');
+            }
+            // Filter out the deleted patient from the state
+            setPatients(patients.filter(patient => patient._id !== patientId));
+        } catch (error) {
+            console.error('Error deleting patient:', error);
+        }
+    };
+
     const filteredPatients = patients.filter(patient =>
         patient && patient.patientId && patient.patientId.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -41,7 +56,7 @@ function TableDisplay() {
             <td>
                 <div className="buttonContainer">
                     <button className='update'>Update</button>
-                    <button className='delete'>Delete</button>
+                    <button className='delete' onClick={() => handleDelete(patient._id)}>Delete</button>
                 </div>
             </td>
         </tr>
