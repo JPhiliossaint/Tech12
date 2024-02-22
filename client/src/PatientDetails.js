@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import './PatientDetails.css'; // Import CSS file for styling
+import './PatientDetails.css'; // Import CSS file for styling 
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const PatientDetails = ({ patientId }) => {
+const PatientDetails = () => {
     const [patientData, setPatientData] = useState(null);
+    const {id} = useParams();
 
     useEffect(() => {
-        const fetchPatientData = async () => {
+        axios.get(`http://localhost:9000/patientdetails/${id}`)
+        .then((response) => {
+            setPatientData(response.data)
+        })
+        /*const fetchPatientData = async () => {
             try {
-                const response = await fetch(`/api/patients/${patientId}`);
+                const response = await fetch(`http://localhost:9000/${patientId}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch patient data');
                 }
-const data = await response.json();
+                const data = await response.json();
                 setPatientData(data);
             } catch (error) {
                 console.error('Error fetching patient data:', error);
             }
         };
 
-        fetchPatientData();
-    }, [patientId]);
+        fetchPatientData();*/
+    }, []) //[patientId]);
 
     return (
         <div className="patient-info">
@@ -44,4 +51,3 @@ const data = await response.json();
 }
 
 export default PatientDetails;
-
