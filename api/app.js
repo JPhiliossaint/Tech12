@@ -11,7 +11,8 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 app.use(logger('dev'));
-app.use(cors());
+app.use(cors(//{origin:"http://localhost:3000"}
+));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

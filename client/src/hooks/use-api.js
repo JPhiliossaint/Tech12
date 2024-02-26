@@ -12,6 +12,8 @@ export function useApi({ path } = { path: '' }) {
   }, []);
 
   return {
-    response
+    // this response send a duplicate JSON
+    //response
   };
 }
+ 

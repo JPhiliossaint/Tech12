@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+  
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.patient-info {
+  text-align: center;
+  padding-top: 50px; /* Adjust padding as needed */
+}
+
+.patient-info h2 {
+  color: white; /* White color for "Patient Information" heading */
+  font-size: 32px; /* Increase font size for emphasis */
+  font-family: 'Lobster', cursive; /* Set Lobster font for heading */
+}
+
+.info {
+  background: linear-gradient(to bottom, #74b9ff, #4b7bec); /* Gradient background */
+  border: 2px solid #2980b9; /* Light blue border */
+  border-radius: 10px; /* Slightly rounded corners */
+  padding: 30px; /* Add padding for spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  max-width: 700px; /* Limit width for better readability */
+  margin: 0 auto; /* Center horizontally */
+  font-family: "Roboto", sans-serif; /* Set Roboto font for body text */
+}
+
+.info p {
+  margin: 20px 0; /* Add spacing between paragraphs */
+  font-size: 18px; /* Adjust font size */
+  color: #fff; /* White text color */
+}
+
+.xray-image {
+  max-width: 100%; /* Ensure image fits within container */
+  margin-top: 30px; /* Add margin for spacing */
+}

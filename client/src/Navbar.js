@@ -5,7 +5,7 @@ export default function Navbar() {
         <Link to="/" class="site-title">Tech12</Link>
         <ul>
             <li>
-                <Link to="/exams">Exams</Link>
+                <Link to="/exams">New Patient</Link>
             </li>
             <li>
                 <Link to="/admin">Admin</Link>

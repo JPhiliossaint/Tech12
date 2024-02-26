@@ -1,54 +1,61 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import {Link, useNavigate, useParams } from 'react-router-dom';
-export default function Exams() {
-    const [patientId, setPatientId] = useState('');
-    const [age, setAge] = useState('');
-    const [sex, setSex] = useState('');
-    const [zipCode, setZipCode] = useState('');
-    const [bmi, setBmi] = useState('');
-    const [examId, setExamId] = useState('');
-    const [keyFindings, setKeyFindings] = useState('');
-    const [brixiaScores, setBrixiaScores] = useState(''); 
-    const [imageURL, setXRayScan] = useState('');
+import axios from 'axios';
+
+export default function Update() {
+    const [patientData, setPatientData] = useState(null);
+    var [patientId, setPatientId] = useState('');
+    var [age, setAge] = useState('');
+    var [sex, setSex] = useState('');
+    var [zipCode, setZipCode] = useState('');
+    var [bmi, setBmi] = useState('');
+    var [examId, setExamId] = useState('');
+    var [keyFindings, setKeyFindings] = useState('');
+    var [brixiaScores, setBrixiaScores] = useState(''); 
+    var [imageURL, setXRayScan] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-
-        const patient = { patientId, age, sex, zipCode, bmi, examId, keyFindings, brixiaScores, imageURL }
-        const response = await fetch('http://localhost:9000', {
-            method: 'POST',
-            body: JSON.stringify(patient),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+    const{id} = useParams();
+    useEffect(() => {
+        axios.get(`http://localhost:9000/patientDetails/${id}`)
+        .then((response) => {
+            setPatientId(response.data.patientId)
+            setAge(response.data.age)
+            setSex(response.data.sex)
+            setZipCode(response.data.zipCode)
+            setBmi(response.data.bmi)
+            setExamId(response.data.examId)
+            setKeyFindings(response.data.keyFindings)
+            setBrixiaScores(response.data.brixiaScores)
+            setXRayScan(response.data.imageURL)
         })
-        const json = await response.json()
-
-        if (!response.ok) {
-            setError(json.error)
-
+    
+    }, []) 
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const data = {
+            patientId, 
+            age, 
+            sex, 
+            zipCode, 
+            bmi, 
+            examId, 
+            keyFindings, 
+            brixiaScores, 
+            imageURL,
         }
-        if (response.ok) {
-            setPatientId('')
-            setAge('')
-            setSex('')
-            setZipCode('')
-            setBmi('')
-            setExamId('')
-            setKeyFindings('')
-            setBrixiaScores('')
-            setXRayScan('')
-            setError(null)
-            console.log('Patient Added', json)
-        }
-        navigate('/')
+        axios.put(`http://localhost:9000/admin/${id}`,data)
+        .then(() =>{
+            
+            navigate('/')
+        })
+        
     }
 
 
     return (
-        <form className='create' onSubmit={handleSubmit}>
-            <h3>New Patient Form</h3>
+        <form className='update' onSubmit={handleUpdate}>
+            <h3>Update Patient Form</h3>
 
             <label>Name</label>
             <input
@@ -104,7 +111,7 @@ export default function Exams() {
                 value={imageURL}
             />
 
-            <button onClick={handleSubmit}>Add Patient</button>
+            <button >Update Patient</button> 
             {error && <div className='error'>{error}</div>}
 
 
